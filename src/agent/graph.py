@@ -245,9 +245,9 @@ async def feedback_node(state: AgentState, config: RunnableConfig):
         score = int(score.split("=")[1])
         comment = comment.split("=")[1]
         print(f"Approved: {approved}")
-        print("printing api key: ", os.getenv("LANGSMITH_API_KEY"))
+        print("printing api key: ", os.getenv("LANGSMITH_API_KEY_FEEDBACK"))
         if approved:
-            langsmith_client = LangSmithClient(api_key=os.getenv("LANGSMITH_API_KEY")) if os.getenv("LANGSMITH_API_KEY") else None
+            langsmith_client = LangSmithClient(api_key=os.getenv("LANGSMITH_API_KEY_FEEDBACK")) if os.getenv("LANGSMITH_API_KEY_FEEDBACK") else None
             if langsmith_client:
                 # Run the blocking create_feedback call in an executor to avoid blocking the event loop
                 loop = asyncio.get_event_loop()
